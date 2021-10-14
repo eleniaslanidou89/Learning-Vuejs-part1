@@ -59,7 +59,7 @@
 
       <div v-if="showSales">
         <ul>
-          <li v-for="sale in sales" :class="{ fav:sale.isFav }" @click="toggleFav(sale)">
+          <li v-for="sale in filteredSales" :class="{ fav:sale.isFav }" @click="toggleFav(sale)">
             <img :src="sale.img" :alt="sale.bags" />
             <h3>{{ sale.shoes }}</h3>
             <span>{{ sale.bags }}</span>

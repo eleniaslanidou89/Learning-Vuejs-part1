@@ -31,8 +31,12 @@ const app = Vue.createApp({
        },
        toggleFav(sale) {
         sale.isFav = !sale.isFav
+       }       
+   },
+   computed: {
+       filteredSales() {
+           return this.sales.filter((sale)=> sale.isFav)
        }
-       
    }
 })
 
