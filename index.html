@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
+    <style>
+      .box {
+        padding: 100px 0;
+        width: 400px;
+        text-align: center;
+        background: #ddd;
+        margin: 20px;
+        display: inline-block;
+      }
+      body {
+        background: #eee;
+        max-width: 960px;
+        margin: 20px auto;
+      }
+      p,
+      h3,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style-type: none;
+        margin: 20px auto;
+        background: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li.fav {
+         background: #ff9e; 
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="age++">Increase age</button>
+      <div @click="title = 'new title'">change</div>
+      <div @click="changeTitle">change book title</div>
+      <button @click="infoMails">
+        <span v-if="mails">I want to recieve info-mails</span>
+        <span v-else="!mails">Done!</span>
+      </button>
+      <div v-if="showSales">
+        <p>{{ title }} - {{ author }} - {{ age }}</p>
+      </div>
+      <button @click="toggleShowSales">
+        <span v-if="showSales">hide sales</span>
+        <span v-else="!showSales">show sales</span>
+      </button>
+
+      <div v-if="showSales">
+        <ul>
+          <li v-for="sale in sales" :class="{ fav:sale.isFav }" @click="toggleFav(sale)">
+            <img :src="sale.img" :alt="sale.bags" />
+            <h3>{{ sale.shoes }}</h3>
+            <span>{{ sale.bags }}</span>
+          </li>
+        </ul>
+      </div>
+      <br />
+      <!-- mouse events -->
+      <div class="box" @mouseover="handleEvent">mouseover (enter)</div>
+      <div class="box" @mouseleave.native="handleEvent = false">mouseleave</div>
+      <div class="box" @dblclick="handleEvent">double click</div>
+      <div class="box"></div>
+
+      <!-- attribute bindings -->
+      <a v-bind:href="url">make your own clothes</a>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
